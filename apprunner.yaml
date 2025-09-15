@@ -1,0 +1,16 @@
+version: 1.0
+runtime: python311
+
+build:
+  commands:
+    build:
+      - echo "No dependency install here for py311"
+
+run:
+  runtime-version: 3.11.13   # any supported 3.11.x is fine
+  pre-run:
+    - python3 -m pip install --upgrade pip
+    - pip3 install -r requirements.txt
+  command: uvicorn main:app --host 0.0.0.0 --port 8080
+  network:
+    port: 8080
